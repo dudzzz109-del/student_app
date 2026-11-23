@@ -4,12 +4,10 @@ class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
 
   @override
-  State<CalculatorScreen> createState() =>
-      _CalculatorScreenState();
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
-
   // Step 4: Declare the Controllers and State Variables
   final firstNumberController = TextEditingController();
   final secondNumberController = TextEditingController();
@@ -20,11 +18,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   // Step 5: Create the Calculation Function
   void calculate(String operation) {
-    final first =
-        double.tryParse(firstNumberController.text.trim());
+    final first = double.tryParse(firstNumberController.text.trim());
 
-    final second =
-        double.tryParse(secondNumberController.text.trim());
+    final second = double.tryParse(secondNumberController.text.trim());
 
     // Check the input
     if (first == null ||
@@ -96,11 +92,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     secondNumberController.dispose();
     super.dispose();
   }
- // Step 8: Design the Calculator Interface
+
+  // Step 8: Design the Calculator Interface
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       // AppBar
       appBar: AppBar(
         title: const Text('My Stateful Calculator'),
@@ -115,15 +111,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-
             const SizedBox(height: 10),
 
             // Calculator icon
-            const Icon(
-              Icons.calculate,
-              size: 64,
-              color: Colors.indigo,
-            ),
+            const Icon(Icons.calculate, size: 64, color: Colors.indigo),
 
             const SizedBox(height: 12),
 
@@ -131,10 +122,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             const Text(
               'BASIC CALCULATOR',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 24),
@@ -179,37 +167,24 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               spacing: 12,
               runSpacing: 12,
               children: [
-
                 ElevatedButton(
                   onPressed: () => calculate('+'),
-                  child: const Text(
-                    '+',
-                    style: TextStyle(fontSize: 24),
-                  ),
+                  child: const Text('+', style: TextStyle(fontSize: 24)),
                 ),
 
                 ElevatedButton(
                   onPressed: () => calculate('-'),
-                  child: const Text(
-                    '−',
-                    style: TextStyle(fontSize: 24),
-                  ),
+                  child: const Text('−', style: TextStyle(fontSize: 24)),
                 ),
 
                 ElevatedButton(
                   onPressed: () => calculate('×'),
-                  child: const Text(
-                    '×',
-                    style: TextStyle(fontSize: 24),
-                  ),
+                  child: const Text('×', style: TextStyle(fontSize: 24)),
                 ),
 
                 ElevatedButton(
                   onPressed: () => calculate('÷'),
-                  child: const Text(
-                    '÷',
-                    style: TextStyle(fontSize: 24),
-                  ),
+                  child: const Text('÷', style: TextStyle(fontSize: 24)),
                 ),
               ],
             ),
@@ -222,25 +197,17 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               decoration: BoxDecoration(
                 color: Colors.indigo.shade50,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: Colors.indigo,
-                ),
+                border: Border.all(color: Colors.indigo),
               ),
               child: Column(
                 children: [
-
-                  Text(
-                    operationLabel,
-                    textAlign: TextAlign.center,
-                  ),
+                  Text(operationLabel, textAlign: TextAlign.center),
 
                   const SizedBox(height: 12),
 
                   const Text(
                     'RESULT',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
 
                   const SizedBox(height: 8),
@@ -273,10 +240,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             const Text(
               'Created by: Palma, Rachel M.\nSection: CCE106L ',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
             ),
 
             const SizedBox(height: 15),

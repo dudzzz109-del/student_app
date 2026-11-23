@@ -1,56 +1,53 @@
 import 'package:flutter/material.dart';
+
 import 'post.dart';
- 
+
 class PostCard extends StatefulWidget {
   final Post post;
- 
-  const PostCard({
-    super.key,
-    required this.post,
-  });
- 
+
+  const PostCard({super.key, required this.post});
+
   @override
   State<PostCard> createState() => _PostCardState();
 }
- 
+
 class _PostCardState extends State<PostCard> {
-  final TextEditingController commentController =
-      TextEditingController();
- 
+  final TextEditingController commentController = TextEditingController();
+
   final List<String> comments = [];
- 
+
   bool isLiked = false;
- 
+
   void likePost() {
     setState(() {
-      isLiked = !isLiked;
+      isLiked = !isLiked; //Tap Like
     });
   }
- 
+
   void addComment() {
     final String comment = commentController.text.trim();
- 
+
     if (comment.isEmpty) {
       return;
     }
- 
+
     setState(() {
-      comments.add(comment);
+      comments.add(comment); //Send a comment
     });
- 
+
     commentController.clear();
   }
- 
+
   @override
   void dispose() {
     commentController.dispose();
     super.dispose();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     final username = widget.post.username.trim();
- 
+
     return Card(
       elevation: 3,
       margin: const EdgeInsets.only(bottom: 16),
@@ -62,23 +59,17 @@ class _PostCardState extends State<PostCard> {
             leading: CircleAvatar(
               backgroundColor: Colors.green,
               child: Text(
-                username.isEmpty
-                    ? '?'
-                    : username[0].toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
+                username.isEmpty ? '?' : username[0].toUpperCase(),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             title: Text(
               username,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: const Text('Student Feed'),
           ),
- 
+
           Padding(
             padding: const EdgeInsets.all(12),
             child: Text(
@@ -86,7 +77,7 @@ class _PostCardState extends State<PostCard> {
               style: const TextStyle(fontSize: 16),
             ),
           ),
- 
+
           Image.network(
             widget.post.imageUrl,
             width: double.infinity,
@@ -96,24 +87,18 @@ class _PostCardState extends State<PostCard> {
               return const SizedBox(
                 height: 220,
                 child: Center(
-                  child: Icon(
-                    Icons.broken_image,
-                    size: 70,
-                    color: Colors.grey,
-                  ),
+                  child: Icon(Icons.broken_image, size: 70, color: Colors.grey),
                 ),
               );
             },
           ),
- 
+
           Row(
             children: [
               TextButton.icon(
                 onPressed: likePost,
                 icon: Icon(
-                  isLiked
-                      ? Icons.favorite
-                      : Icons.favorite_border,
+                  isLiked ? Icons.favorite : Icons.favorite_border,
                   color: isLiked ? Colors.red : null,
                 ),
                 label: Text(isLiked ? 'Liked' : 'Like'),
@@ -121,12 +106,10 @@ class _PostCardState extends State<PostCard> {
               Text('${comments.length} Comments'),
             ],
           ),
- 
+
           for (final String comment in comments)
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                16, 4, 16, 4,
-              ),
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
@@ -137,7 +120,7 @@ class _PostCardState extends State<PostCard> {
                 child: Text(comment),
               ),
             ),
- 
+
           Padding(
             padding: const EdgeInsets.all(12),
             child: Row(

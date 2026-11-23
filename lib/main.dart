@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'login_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const StudentApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,9 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Student Navigation App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
       home: const LoginScreen(),
